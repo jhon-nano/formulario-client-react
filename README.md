@@ -1,18 +1,16 @@
-# Getting Started with Create React App
+# Nombre de la Aplicación
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Formulario Web.
 
-## Available Scripts
+## Descripción
 
-In the project directory, you can run:
+La Aplicación es una aplicación web desarrollada en React utilizando AmplifyJS y Lambda en Node.js para la conexión con la base de datos. Esta aplicación permite [describir brevemente la funcionalidad principal de la aplicación].
 
-### `npm start`
+### Características Principales
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Front: Material UI, 
+[Característica 2]: Describe la segunda característica principal de la aplicación.
+[Característica 3]: Describe la tercera característica principal de la aplicación.
 
 ### `npm test`
 
