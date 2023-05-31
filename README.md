@@ -1,6 +1,4 @@
-# Nombre de la Aplicación
-
-Formulario Web.
+# Formulario Web
 
 ## Descripción
 
@@ -14,4 +12,12 @@ La Aplicación es una aplicación web desarrollada en React utilizando Amplify J
 
 ### Link de Pagina
 
-** [https://master.d1r73gegjsarun.amplifyapp.com/](https://master.d1r73gegjsarun.amplifyapp.com/)**
+[https://master.d1r73gegjsarun.amplifyapp.com/](https://master.d1r73gegjsarun.amplifyapp.com/)
+
+## Instrucciones de Uso
+
+1. Clona este repositorio en tu máquina local.
+2. Instala las dependencias necesarias utilizando el siguiente comando: npm install
+3. Configura la conexión a la base de datos Postgres en el archivo `.env`.
+4. Ejecuta la aplicación localmente con el siguiente comando:
+5. Abre tu navegador web y visita [http://localhost:3000](http://localhost:3000) para acceder a la aplicación.
