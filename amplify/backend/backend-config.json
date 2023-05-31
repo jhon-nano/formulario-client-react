@@ -1,9 +1,4 @@
 {
   "function": {},
-  "storage": {
-    "dbformulario": {
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
-    }
-  }
+  "storage": {}
 }
