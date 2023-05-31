@@ -17,6 +17,7 @@ export default function FormClient() {
     control,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   const [api_countries, setCountries] = useState([]);
@@ -62,17 +63,18 @@ export default function FormClient() {
         setLoading(true)
         API.post('api', '/form/create', { body: { id: id, nombre_completo: nombre_completo, pais: country, ciudad: ciudad } })
           .then((res) => {
-            setLoading(false)
+            reset();
+            setLoading(false);
             enqueueSnackbar("Formulario Ingresado!", {
               variant: "success",
-            })
+            });
           })
           .catch((error) => {
-            setLoading(false)
+            setLoading(false);
             console.error(error);
             enqueueSnackbar("Error Ingresado Formulario!", {
               variant: "error",
-            })
+            });
           });
       })
       .catch(() => {
