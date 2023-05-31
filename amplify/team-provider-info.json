@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-formularioclient-dev-191641-authRole",
+      "UnauthRoleArn": "arn:aws:iam::409193214203:role/amplify-formularioclient-dev-191641-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::409193214203:role/amplify-formularioclient-dev-191641-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-formularioclient-dev-191641-deployment",
+      "UnauthRoleName": "amplify-formularioclient-dev-191641-unauthRole",
+      "StackName": "amplify-formularioclient-dev-191641",
+      "StackId": "arn:aws:cloudformation:us-east-1:409193214203:stack/amplify-formularioclient-dev-191641/6e7d5870-ff48-11ed-a4ae-0e2b2597f9f5",
+      "AmplifyAppId": "d1r73gegjsarun"
+    }
+  }
+}

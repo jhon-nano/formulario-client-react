@@ -1,0 +1,14 @@
+{
+  "resourceName": "dbformulario",
+  "tableName": "cliente",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "nombre_completo",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
