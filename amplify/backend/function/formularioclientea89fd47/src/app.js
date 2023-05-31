@@ -37,7 +37,7 @@ app.get('/form/list', async function (req, res) {
     await client.end(); // Close DB
     console.log('Desconexión exitosa de la base de datos');
 
-    res.json(result);
+    res.json(result); // respuesta
 
 
   } catch (error) {
@@ -64,17 +64,17 @@ app.post('/form/create', async function (req, res) {
     const values = [id, nombre_completo, pais, ciudad];
 
 
-    await client.query(query, values);
+    await client.query(query, values); // query db
 
 
-    await client.end();
+    await client.end(); // close db
     console.log('Desconexión exitosa de la base de datos');
 
-    res.sendStatus(201);
+    res.sendStatus(201); // respuesta
 
   } catch (error) {
     console.error('Error al crear el registro:', error);
-    res.status(500).send('Error del servidor . create form');
+    res.status(500).send('Error del servidor. create form');
   }
 });
 
