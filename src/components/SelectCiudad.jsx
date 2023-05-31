@@ -24,7 +24,7 @@ export default function SelectCiudad({ pais, control }) {
                         <TextField
                             {...params}
                             label="Elige una Ciudad"
-                         
+                            required
                             inputProps={{
                                 ...params.inputProps,
                                 autoComplete: 'new-password', // disable autocomplete and autofill

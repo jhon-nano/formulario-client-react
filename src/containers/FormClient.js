@@ -1,14 +1,13 @@
 import { Assignment, SaveTwoTone } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Card, CardContent, CardHeader, Grid, Skeleton, TextField } from '@mui/material';
-import { API } from 'aws-amplify';
-import axios from 'axios';
+import { useConfirm } from 'material-ui-confirm';
+import { useSnackbar } from 'notistack';
 import React, { useEffect, useState } from 'react';
 import { Controller, useForm, useWatch } from 'react-hook-form';
 import SelectCiudad from '../components/SelectCiudad';
 import SelectPaises from '../components/SelectPaises';
-import { useSnackbar } from 'notistack';
-import { useConfirm } from 'material-ui-confirm';
+import { createForm, getCountries } from '../helpers/form';
 
 export default function FormClient() {
   const { enqueueSnackbar } = useSnackbar();
@@ -25,10 +24,8 @@ export default function FormClient() {
 
 
   useEffect(() => {
-    // Obtener la lista de países desde el API
-    axios.get('https://countriesnow.space/api/v0.1/countries') // Reemplaza la URL con tu API real
+    getCountries()
       .then(response => {
-
         setLoading(false)
         setCountries(response.data.data);
       })
@@ -60,9 +57,13 @@ export default function FormClient() {
       },
     })
       .then(() => {
+
         setLoading(true)
-        API.post('api', '/form/create', { body: { id: id, nombre_completo: nombre_completo, pais: country, ciudad: ciudad } })
-          .then((res) => {
+
+        const dat = { id: id, nombre_completo: nombre_completo, pais: country, ciudad: ciudad };
+
+        createForm(dat)
+          .then(() => {
             reset();
             setLoading(false);
             enqueueSnackbar("Formulario Ingresado!", {
@@ -103,7 +104,7 @@ export default function FormClient() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <CardHeader
           avatar={<Assignment fontSize='large' />}
-          title='Formulario'
+          title={`Formulario`}
           subheader='Completa el Formulario'
           action={
             <LoadingButton
