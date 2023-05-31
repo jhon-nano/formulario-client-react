@@ -10,6 +10,10 @@ La Aplicación es una aplicación web desarrollada en React utilizando Amplify J
 - 👨‍💻 Backend: **Amplify JS, Node JS, Lambda, API Gateway**
 - 📫 Base Datos: **Postgres**
 
+### RUTA DE LAMBDA
+
+- amplify/backend/function/formularioclientea89fd47/src/app.js
+
 ### Link de Pagina
 
 [https://master.d1r73gegjsarun.amplifyapp.com/](https://master.d1r73gegjsarun.amplifyapp.com/)
