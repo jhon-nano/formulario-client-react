@@ -1,0 +1,10 @@
+{
+  "lambdaLayers": [],
+  "secretNames": [
+    "USER",
+    "HOST",
+    "DATABASE",
+    "PASSWORD",
+    "PORT"
+  ]
+}

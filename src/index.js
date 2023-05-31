@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ConfirmProvider } from 'material-ui-confirm';
+import { SnackbarProvider } from 'notistack';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ConfirmProvider>
+      <SnackbarProvider>
+        <App />
+      </SnackbarProvider>
+    </ConfirmProvider>
   </React.StrictMode>
 );
 

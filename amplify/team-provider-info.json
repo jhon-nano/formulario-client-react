@@ -9,7 +9,23 @@
       "UnauthRoleName": "amplify-formularioclient-dev-191641-unauthRole",
       "StackName": "amplify-formularioclient-dev-191641",
       "StackId": "arn:aws:cloudformation:us-east-1:409193214203:stack/amplify-formularioclient-dev-191641/6e7d5870-ff48-11ed-a4ae-0e2b2597f9f5",
-      "AmplifyAppId": "d1r73gegjsarun"
+      "AmplifyAppId": "d1r73gegjsarun",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-formularioclient-dev-191641-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "function": {
+        "formularioclientea89fd47": {
+          "deploymentBucketName": "amplify-formularioclient-dev-191641-deployment",
+          "s3Key": "amplify-builds/formularioclientea89fd47-675a643235546e396e52-build.zip",
+          "secretsPathAmplifyAppId": "d1r73gegjsarun"
+        }
+      },
+      "auth": {
+        "formularioclient": {}
+      },
+      "api": {
+        "api": {}
+      }
     }
   }
 }

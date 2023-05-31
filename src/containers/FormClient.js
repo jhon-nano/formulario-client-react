@@ -1,14 +1,18 @@
 import { Assignment, SaveTwoTone } from '@mui/icons-material';
-import { Autocomplete, Card, CardContent, CardHeader, Grid, Skeleton, TextField } from '@mui/material'
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { Controller, useForm, useWatch } from 'react-hook-form'
-import SelectPaises from '../components/SelectPaises';
-import SelectCiudad from '../components/SelectCiudad';
 import { LoadingButton } from '@mui/lab';
+import { Card, CardContent, CardHeader, Grid, Skeleton, TextField } from '@mui/material';
+import { API } from 'aws-amplify';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Controller, useForm, useWatch } from 'react-hook-form';
+import SelectCiudad from '../components/SelectCiudad';
+import SelectPaises from '../components/SelectPaises';
+import { useSnackbar } from 'notistack';
+import { useConfirm } from 'material-ui-confirm';
 
 export default function FormClient() {
-
+  const { enqueueSnackbar } = useSnackbar();
+  const confirm = useConfirm();
   const {
     control,
     handleSubmit,
@@ -23,7 +27,7 @@ export default function FormClient() {
     // Obtener la lista de países desde el API
     axios.get('https://countriesnow.space/api/v0.1/countries') // Reemplaza la URL con tu API real
       .then(response => {
-        console.log(response)
+
         setLoading(false)
         setCountries(response.data.data);
       })
@@ -36,41 +40,84 @@ export default function FormClient() {
 
 
   const onSubmit = (data) => {
+    const id = generarIdAleatorio(8);
 
+    const { nombre_completo, pais: { country }, ciudad } = data;
 
-console.log(data)
+    confirm({
+      title: 'Ingresar el Formulario ?',
+      description: "Presione el boton de CONFIRMAR.",
+      confirmationText: 'CONFIRMAR',
+      confirmationButtonProps: {
+        variant: 'contained',
+        color: 'primary'
+      },
+      cancellationText: 'CANCELAR',
+      cancellationButtonProps: {
+        variant: 'text',
+        color: 'error'
+      },
+    })
+      .then(() => {
+        setLoading(true)
+        API.post('api', '/form/create', { body: { id: id, nombre_completo: nombre_completo, pais: country, ciudad: ciudad } })
+          .then((res) => {
+            setLoading(false)
+            enqueueSnackbar("Formulario Ingresado!", {
+              variant: "success",
+            })
+          })
+          .catch((error) => {
+            setLoading(false)
+            console.error(error);
+            enqueueSnackbar("Error Ingresado Formulario!", {
+              variant: "error",
+            })
+          });
+      })
+      .catch(() => {
+        console.error('cancel confirm');
+      });
   };
 
 
-  const country = useWatch({
+  const pais = useWatch({
     control,
-    name: "country",
+    name: "pais",
   });
 
+  function generarIdAleatorio(length) {
+    let caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let id = '';
+    for (let i = 0; i < length; i++) {
+      id += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+    return id;
+  }
 
 
   return (
     <Card sx={{ width: 400 }} >
-         <form onSubmit={handleSubmit(onSubmit)}>
-      <CardHeader
-        avatar={<Assignment fontSize='large' />}
-        title='Formulario'
-        subheader='Completa el Formulario'
-        action={
-          <LoadingButton
-            color="primary"
-            type="submit"
-            loading={loading}
-            loadingPosition="start"
-            startIcon={<SaveTwoTone />}
-            variant="contained"
-          >
-            {loading ? "CARGANDO" : "REGISTRAR"}
-          </LoadingButton>
-        }
-      />
-      <CardContent >
-     
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <CardHeader
+          avatar={<Assignment fontSize='large' />}
+          title='Formulario'
+          subheader='Completa el Formulario'
+          action={
+            <LoadingButton
+              color="primary"
+              type="submit"
+              loading={loading}
+              loadingPosition="start"
+              startIcon={<SaveTwoTone />}
+              variant="contained"
+            >
+              {loading ? "CARGANDO" : "REGISTRAR"}
+            </LoadingButton>
+          }
+        />
+        <CardContent >
+
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
               {loading ? (
@@ -101,16 +148,16 @@ console.log(data)
               )}
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-              {!country  && loading ? (
+              {loading ? (
                 <Skeleton height={50} />
               ) : (
-                <SelectCiudad country={country} control={control} />
+                <SelectCiudad pais={pais} control={control} />
               )}
             </Grid>
 
           </Grid>
-        
-      </CardContent>
+
+        </CardContent>
       </form>
     </Card>
   )

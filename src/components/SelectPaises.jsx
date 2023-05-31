@@ -33,7 +33,7 @@ export default function SelectPaises({ countries, control }) {
                     onChange={(_, data) => field.onChange(data)}
                 />
             )}
-            name="country"
+            name="pais"
             control={control}
 
         />
