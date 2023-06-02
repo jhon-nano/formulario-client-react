@@ -6,8 +6,8 @@ La Aplicación es una aplicación web desarrollada en React utilizando Amplify J
 
 ### Características Principales
 
-- 🌱 Front: **Material UI, axios, react-hook-form**
-- 👨‍💻 Backend: **Amplify JS, Node JS, Lambda, API Gateway**
+- 🌱 Front: **React, Material UI, react-hook-form, axios**
+- 👨‍💻 Backend: **Node JS, Amplify JS,  Lambda, API Gateway**
 - 📫 Base Datos: **Postgres**
 
 ### Ruta de Lambda en Node JS
